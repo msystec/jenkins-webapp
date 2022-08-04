@@ -52,4 +52,7 @@ pipeline {
         sshagent(['zap']) {
          sh 'ssh -o  StrictHostKeyChecking=no ubuntu@54.226.179.117 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://54.166.154.194:8080/webapp/" || true'
   }
+      }
+    }
+  }
 }
