@@ -12,13 +12,6 @@ pipeline {
             ''' 
       }
     }
-      stage ('Check-Git-Secrets') {
-      steps {
-        sh 'rm trufflehog || true'
-        sh 'docker run -it -v "$PWD:/pwd" ghcr.io/trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys --debug --json https://github.com/msystec/jenkins-webapp.git > trufflehog'
-        sh 'cat trufflehog'
-      }
-    }
     stage ('SAST') {
       steps {
         withSonarQubeEnv('sonar') {
